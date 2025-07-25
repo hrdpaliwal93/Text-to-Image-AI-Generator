@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
+import { motion } from 'framer-motion'
+import { AppContext } from '../context/AppContext'
+
 
 const Result = () => {
 
@@ -7,12 +10,29 @@ const Result = () => {
   const [isimageloaded, setisimageloaded] = useState(false)
   const [loading, setloading] = useState(false)
   const [input, setinput] = useState("")
+  const {generateimage} = useContext(AppContext)
+
 
   const onsubmit = async (e)=>{
+    e.preventDefault()
+    setloading(true)
+    if(input){
+      const image = await generateimage(input)
+      setisimageloaded(true)
+      setimage(image)
+    }
+    setloading(false)
 
   }
 
-  return <form  onsubmit={onsubmit} className='flex flex-col min-h-[90vh] justify-center items-center'>
+  return <motion.form 
+  
+  initial={{opacity:0.2, y:100}}
+  transition={{duration:1}}
+  whileInView={{opacity:1,y:0}}
+  viewport={{once:true}}
+
+    onSubmit={onsubmit} className='flex flex-col min-h-[90vh] justify-center items-center'>
     <div>
       <div className='relative'>
         <img src={image} alt="" className='max-w-sm rounded' />
@@ -39,7 +59,7 @@ const Result = () => {
         <a href={image} download className='bg-zinc-900 px-10 py-3 rounded-full cursor-pointer'>Download</a>
       </div>
     }
-  </form>
+  </motion.form>
 }
 
 export default Result
