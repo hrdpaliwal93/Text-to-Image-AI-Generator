@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 const Buycredit = () => {
  const {user} = useContext(AppContext)
 
+
   return (
     <motion.div
       initial={{opacity:0.2, y:100}}
@@ -30,7 +31,7 @@ const Buycredit = () => {
 
             <p className='mt-6'> <span className='text-3xl font-medium'> ${item.price}</span> / {item.credits} credits</p>
 
-            <button className='w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52'> {user ? 'Purchase' : 'Get started'}</button>
+            <button  className='w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52'> {user ? 'Purchase' : 'Get started'}</button>
           </div>
 
         ))}

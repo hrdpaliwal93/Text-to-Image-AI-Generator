@@ -8,4 +8,6 @@ userRouter.post('/register', registeruser)
 userRouter.post('/login', loginuser)
 userRouter.get('/credits', userauth,  usercredits)
 
+
+
 export default userRouter

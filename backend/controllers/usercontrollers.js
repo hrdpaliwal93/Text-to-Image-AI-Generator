@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
+
 const registeruser = async (req,res)=>{
     try{
         const {name, email, password}  = req.body
@@ -61,6 +62,8 @@ const usercredits = async (req,res)=>{
     console.log(e)
 }
    }
+
+
 
 export {
     registeruser,
